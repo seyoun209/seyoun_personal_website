@@ -2,7 +2,8 @@ import React, { useMemo, useState } from 'react'
 import { Routes, Route, NavLink } from 'react-router-dom'
 import Hero from './Hero'
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/abcd1234'
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrbabenk';
+
 /* ---------- icons (inline SVG, no extra packages) ---------- */
 const GitHubIcon = (p)=>(
   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden {...p}>
@@ -224,28 +225,21 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* right: AJAX form (no Outlook) */}
-          <form className="card" onSubmit={onSubmit}>
-            <label className="small">Full Name</label>
-            <input className="input" name="name" placeholder="First and Last" required />
+        <form className="card" action={`mailto:${PROFILE.email}`} method="post" encType="text/plain">
+          <label className="small">Full Name</label>
+          <input className="input" name="name" placeholder="First and Last" required />
 
-            <label className="small" style={{ marginTop: 10 }}>Email address</label>
-            <input className="input" name="email" type="email" placeholder="your@email.here" required />
+          <label className="small" style={{ marginTop: 10 }}>Email address</label>
+          <input className="input" name="email" type="email" placeholder="your@email.here" required />
 
-            <label className="small" style={{ marginTop: 10 }}>Message</label>
-            <textarea className="textarea" name="message" rows="6" placeholder="Say hello..." required></textarea>
+          <label className="small" style={{ marginTop: 10 }}>Message</label>
+          <textarea className="textarea" name="message" rows="6" placeholder="Say hello..." required></textarea>
 
-            {/* spam honeypot (hidden) */}
-            <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
+          <div style={{ display:'flex', gap:12, alignItems:'center', marginTop:10 }}>
+            <button className="btn" type="submit">Send</button>
+          </div>
+        </form>
 
-            <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginTop: 10 }}>
-              <button className="btn" type="submit" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Sending…' : 'Send'}
-              </button>
-              {status === 'sent' && <span className="small" style={{ color: 'green' }}>Thanks — I’ll get back to you soon.</span>}
-              {status === 'error' && <span className="small" style={{ color: 'crimson' }}>Didn’t send. Try again or email me.</span>}
-            </div>
-          </form>
         </div>
       </section>
     </main>
