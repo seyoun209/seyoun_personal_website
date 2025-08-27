@@ -4,7 +4,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/seyoun_personal_website/',
   plugins: [react()],
-  // Use relative paths so it works at /<repo-name>/ on GitHub Pages
-  base: ''
 })
