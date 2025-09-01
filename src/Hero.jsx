@@ -31,8 +31,13 @@ const IconLink = ({href,label,children,className=""}) => (
 
 export default function Hero(){
   return (
-    <section className="hero-section">
-      <div className="hero-container">
+    <section className="hero-section compact-hero">
+      <div className="hero-container hero-row">
+        <motion.img className="hero-photo"
+          src="images/Headshot.jpg"
+          alt="Jess Byun headshot"
+          initial={{scale:0.9, opacity:0}} animate={{scale:1, opacity:1, y: [0,-6,0]}} transition={{duration:1.2, y:{repeat: Infinity, duration:4}}}
+        />
         <div className="hero-text">
           <motion.h1 initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:1}}>
             Hi, I’m <span className="highlight">Jess Byun</span>,
@@ -40,20 +45,7 @@ export default function Hero(){
           <motion.p initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.6,duration:1}}>
             and I’m a PhD student in Bioinformatics @ UNC-Chapel Hill.
           </motion.p>
-
-          <motion.div className="social-icons on-dark" initial={{opacity:0}} animate={{opacity:1}} transition={{delay:1}}>
-            <IconLink href="mailto:sbyun@unc.edu" label="Email"><MailIcon/></IconLink>
-            <IconLink href="https://github.com/seyoun209" label="GitHub"><GitHubIcon/></IconLink>
-            <IconLink href="https://orcid.org/0000-0002-2915-6012" label="ORCID"><OrcidIcon/></IconLink>
-            <IconLink href="https://www.linkedin.com/in/jess-b-860a4380/" label="LinkedIn"><LinkedinIcon/></IconLink>
-          </motion.div>
         </div>
-
-        <motion.img className="hero-photo"
-          src="images/Headshot.jpg"
-          alt="Jess Byun headshot"
-          initial={{scale:0.9, opacity:0}} animate={{scale:1, opacity:1, y: [0,-6,0]}} transition={{duration:1.2, y:{repeat: Infinity, duration:4}}}
-        />
       </div>
     </section>
   )
